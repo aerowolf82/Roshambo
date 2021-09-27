@@ -16,10 +16,16 @@ console.log('Starting Rock-Paper-Scissors game against the computer')
 console.log(`You play ${input}!`);
 
 
-
-
-
-
+class RoPaSci {
+  constructor (){
+    this.ra = ['rock', 'paper', 'scissors'];
+  }
+  get compChoice(){
+    return this.ra[Math.floor(Math.random() * 3)];
+  }
+}
+let retaliation =new RoPaSci();
+console.log(retaliation.compChoice);
 
 
 
