@@ -2,7 +2,6 @@
 const yargs = require('yargs/yargs')
 const { hideBin } = require('yargs/helpers')
 const argv = yargs(hideBin(process.argv)).argv
-//argv.move   ==  the arg they want us to use
 
 /*  Example input/output
 $ node main.js --move=rock
@@ -24,83 +23,35 @@ class RoPaSci {
     return this.ra[Math.floor(Math.random() * 3)];
   }
 }
-let retaliation =new RoPaSci();
-console.log(retaliation.compChoice);
 
-
-
-/*  Found...I mean...plundered...code...
-
-const input = argv.move.toLowerCase();
-
-console.log('Playing a game of Roshambo against the computer.');
-
-class Roshambo {
-    constructor () {
-        this.arr = ['rock', 'paper', 'scissors'];
+class Judge {
+    constructor(playMove, compMove){
+        this.playMove = playMove;
+        this.compMove = compMove;
     }
 
-    showPlays = (input, compChose) => {
-        console.log(`Player plays ${input}`);
-        console.log(`Computer plays ${compChose}`)
-    }
-
-    calcWinner (input , compChose) {
-        if (input === 'rock' && compChose === 'paper'){
-            this.showPlays(input, compChose);
-            console.log(this.compWins());
-        } else if (input === 'rock' && compChose === 'scissors'){
-            this.showPlays(input, compChose);
-            console.log(this.playerWins());
-        } else if (input === 'rock' && compChose === 'rock'){
-            this.showPlays(input, compChose);
-            console.log(this.tieGame());
-        } else if (input === 'paper' && compChose === 'scissors'){
-            this.showPlays(input, compChose);
-            console.log(this.compWins());
-        } else if (input === 'paper' && compChose === 'paper'){
-            this.showPlays(input, compChose);
-            console.log(this.tieGame());
-        } else if (input === 'paper' && compChose === 'rock'){
-            this.showPlays(input, compChose);
-            console.log(this.playerWins());
-        } else if (input === 'scissors' && compChose === 'scissors'){
-            this.showPlays(input, compChose);
-            console.log(this.tieGame());
-        } else if (input === 'scissors' && compChose === 'rock'){
-            this.showPlays(input, compChose);
-            console.log(this.compWins());
-        } else if (input === 'scissors' && compChose === 'paper'){
-            this.showPlays(input, compChose);
-            console.log(this.playerWins());
-        } else {
-            console.log(`Error - ${input} and ${compChose}`)
+    decideWinner (){
+        if (this.playMove === this.compMove){
+            return '~ This game is a TIE! ~';
+        } else if (this.playMove === 'rock' && this.compMove === 'paper'){
+            return '~ Computer wins! ~';
+        } else if (this.playMove === 'rock' && this.compMove === 'scissors'){
+            return '~ Player wins! ~';
+        } else if (this.playMove === 'paper' && this.compMove === 'scissors'){
+            return '~ Computer wins! ~';
+        } else if (this.playMove === 'paper' && this.compMove === 'rock'){
+            return '~ Player wins! ~';
+        } else if (this.playMove === 'scissors' && this.compMove === 'rock'){
+            return '~ Computer wins! ~';
+        } else if (this.playMove === 'scissors' && this.compMove === 'paper'){
+            return '~ Player wins! ~';
+        } else{
+            return '~ERROR ERROR ERROR~';
         }
     }
-
-    compWins = () => '~ Computer wins! ~';
-    playerWins = () => '~ Player wins! ~';
-    tieGame = () =>'~ Tie Game! ~';
 }
 
-class Player extends Roshambo{
-    constructor() {
-        super()
-        this.move = input;
-    }
-}
-
-class Computer extends Roshambo{
-    constructor() {
-        super();
-        this.move = this.arr[Math.floor(Math.random() * 3)];
-    }
-}
-
-let player = new Player();
-let computer = new Computer();
-let roshambo = new Roshambo();
-roshambo.calcWinner(player.move,computer.move)
-
-
-*/
+let retaliation =new RoPaSci();
+let judgeWinner = new Judge(input, retaliation.compChoice);
+console.log(judgeWinner.compMove + "  " + judgeWinner.playMove);
+console.log(judgeWinner.decideWinner());
