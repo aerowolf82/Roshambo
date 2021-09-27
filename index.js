@@ -12,7 +12,8 @@ Computer plays paper!
 ~Computer wins.~
 */
 const input = argv.move.toLowerCase();
-console.log(input);
+console.log('Starting Rock-Paper-Scissors game against the computer')
+console.log(`You play ${input}!`);
 
 
 
