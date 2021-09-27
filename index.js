@@ -2,6 +2,27 @@
 const yargs = require('yargs/yargs')
 const { hideBin } = require('yargs/helpers')
 const argv = yargs(hideBin(process.argv)).argv
+//argv.move   ==  the arg they want us to use
+
+/*  Example input/output
+$ node main.js --move=rock
+Playing a game of Roshambo against the computer.
+Player plays rock!
+Computer plays paper!
+~Computer wins.~
+*/
+const input = argv.move.toLowerCase();
+console.log(input);
+
+
+
+
+
+
+
+
+
+/*  Found...I mean...plundered...code...
 
 const input = argv.move.toLowerCase();
 
@@ -73,3 +94,6 @@ let player = new Player();
 let computer = new Computer();
 let roshambo = new Roshambo();
 roshambo.calcWinner(player.move,computer.move)
+
+
+*/
