@@ -3,13 +3,6 @@ const yargs = require('yargs/yargs')
 const { hideBin } = require('yargs/helpers')
 const argv = yargs(hideBin(process.argv)).argv
 
-/*  Example input/output
-$ node main.js --move=rock
-Playing a game of Roshambo against the computer.
-Player plays rock!
-Computer plays paper!
-~Computer wins.~
-*/
 const input = argv.move.toLowerCase();
 console.log('Starting Rock-Paper-Scissors game against the computer')
 console.log(`You play ${input}!`);
@@ -53,5 +46,5 @@ class Judge {
 
 let retaliation =new RoPaSci();
 let judgeWinner = new Judge(input, retaliation.compChoice);
-console.log(judgeWinner.compMove + "  " + judgeWinner.playMove);
+console.log(`The computer plays ${judgeWinner.compMove}!`);
 console.log(judgeWinner.decideWinner());
